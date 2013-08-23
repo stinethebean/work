@@ -1,9 +1,8 @@
-﻿using LifeTracker_v2.Common;
+﻿using LifeTrackerApp.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -14,12 +13,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.Storage;
-using Windows.Storage.Pickers;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
-namespace LifeTracker_v2
+namespace LifeTrackerApp
 {
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
@@ -54,7 +51,6 @@ namespace LifeTracker_v2
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
-            PickFilesButton.Click += new RoutedEventHandler(PickFilesButton_Click);
         }
 
         /// <summary>
@@ -102,36 +98,5 @@ namespace LifeTracker_v2
         }
 
         #endregion
-
-        private async void PickFilesButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Clear any previously returned files between iterations of this scenario
-            
-
-            FileOpenPicker openPicker = new FileOpenPicker();
-            openPicker.ViewMode = PickerViewMode.List;
-            openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-            openPicker.FileTypeFilter.Add("*");
-            IReadOnlyList<StorageFile> files = await openPicker.PickMultipleFilesAsync();
-            if (files.Count > 0)
-            {
-                StringBuilder output = new StringBuilder("Picked files:\n");
-                // Application now has read/write access to the picked file(s)
-                foreach (StorageFile file in files)
-                {
-                    output.Append(file.Name + "\n");
-                }
-               // OutputTextBlock.Text = output.ToString();
-            }
-            else
-            {
-              //  OutputTextBlock.Text = "Operation cancelled.";
-            }
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }
