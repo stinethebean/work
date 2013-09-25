@@ -16,8 +16,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.WindowsAzure.MobileServices;
 
 // The Grid App template is documented at http://go.microsoft.com/fwlink/?LinkId=234226
+
 
 namespace LifeTrackerApp
 {
@@ -35,6 +37,8 @@ namespace LifeTrackerApp
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
+        
+
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -109,5 +113,7 @@ namespace LifeTrackerApp
             await SuspensionManager.SaveAsync();
             deferral.Complete();
         }
+
+        public static MobileServiceClient MobileService = new MobileServiceClient("https://lifetracker.azure-mobile.net/", "EBlXgOBltmCDhnJtGNtKYRkdTtcMpo99");
     }
 }

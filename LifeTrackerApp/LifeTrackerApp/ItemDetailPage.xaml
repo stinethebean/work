@@ -20,7 +20,7 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+    <Grid Style="{StaticResource MyColoringStyle}"
         DataContext="{Binding Item}"
         d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
         <Grid.ChildrenTransitions>
@@ -38,10 +38,15 @@
                   to show details for the current item
         -->
         <Grid Grid.Row="1" x:Name="contentRegion">
-            <Image Source="{Binding ImagePath}" HorizontalAlignment="Left" Height="334" Margin="67,64,0,0" VerticalAlignment="Top" Width="391"/>
+
+            <Rectangle Width="300" RadiusX="30" RadiusY="30" HorizontalAlignment="Left" Margin="100">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="{Binding ImagePath}" Stretch='Fill'/>
+                </Rectangle.Fill>
+            </Rectangle>
             <TextBlock Text="Notes: " HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="385,24,0,0"/>
-            <TextBlock Text="{Binding Description}" Margin="385,83,534,519" TextWrapping="WrapWholeWords"/>
-            <TextBlock Text="{Binding Content}" Style="{Binding SubheaderTextBlockStyle}" Margin="385,114,185,284" TextWrapping="WrapWholeWords"/>
+            <TextBlock Text="{Binding Description}" Margin="0,-24,919,626" TextWrapping="WrapWholeWords"/>
+            <TextBlock Text="{Binding Content}" Style="{StaticResource MyFontSubheaderBlockStyle}" Margin="462,114,185,284" TextWrapping="WrapWholeWords"/>
         </Grid>
 
         <!-- Back button and page title -->
@@ -50,14 +55,14 @@
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <AppBarButton x:Name="backButton" Icon="Back" Height="95" Margin="10,46,10,0"
+            <AppBarButton x:Name="backButton" Icon="Back" Height="95" Margin="10,46,10,0" Foreground="#EBAF3C"
                           Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}" 
                           Visibility="{Binding IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}, RelativeSource={RelativeSource Mode=Self}}"
                           AutomationProperties.Name="Back"
                           AutomationProperties.AutomationId="BackButton"
                           AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" Text="{Binding Title}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+            <TextBlock x:Name="pageTitle" Text="{Binding Title}" Style="{StaticResource MyFontHeaderBlockStyle}" 
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="105,0,45,26" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 </Page>

@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.WindowsAzure.MobileServices;
 
 // The Grouped Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234231
 
@@ -131,5 +132,12 @@ namespace LifeTrackerApp
         {
 
         }
+        public class Item
+        {
+            public int Id { get; set; }
+            public string Text { get; set; }
+        }
+        Item item = new Item { Text = "Awesome item" };
+        await App.MobileService.GetTable<Item>().InsertAsync(item);
     }
 }

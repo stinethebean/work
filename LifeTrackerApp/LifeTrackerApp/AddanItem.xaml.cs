@@ -52,6 +52,12 @@ namespace LifeTrackerApp
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
         }
+        public class Item
+        {
+            public int Id { get; set; }
+            public string Text { get; set; }
+        }
+
 
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also

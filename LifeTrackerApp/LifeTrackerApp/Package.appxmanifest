@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="LifeTrackerApp.App">
-      <m2:VisualElements DisplayName="LifeTrackerApp" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="LifeTrackerApp" ForegroundText="light" BackgroundColor="#464646" ToastCapable="false">
+      <m2:VisualElements DisplayName="LifeTrackerApp" Square150x150Logo="Asset\small-logo-LT.png" Square30x30Logo="Assets\SmallLogo.png" Description="LifeTrackerApp" ForegroundText="light" BackgroundColor="#068894" ToastCapable="false">
         <m2:SplashScreen Image="Assets\small-logo-LT.png" BackgroundColor="#068894" />
       </m2:VisualElements>
     </Application>

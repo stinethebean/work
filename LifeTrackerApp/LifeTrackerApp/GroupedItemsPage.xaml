@@ -25,6 +25,9 @@
             IsSourceGrouped="true"
             ItemsPath="Items"
             d:Source="{Binding Groups, Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}"/>
+        <Style x:Name="BackgroundColorScheme" TargetType="Grid">
+            <Setter Property="Background" Value="#068894"/>
+        </Style>
     </Page.Resources>
 
 
@@ -55,7 +58,7 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Style="{StaticResource MyColoringStyle}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -92,8 +95,8 @@
                         </Border>
                         <Border VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}" HorizontalAlignment="Stretch" CornerRadius="30" Padding="0">
                             <StackPanel  >
-                                <TextBlock Text="{Binding Title}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}" Height="100" Margin="15,0,15,0"/>
-                                <TextBlock Text="{Binding Subtitle}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
+                                <TextBlock Text="{Binding Title}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource MyFontSubheaderBlockStyle}" Height="100" Margin="15,0,15,0"/>
+                                <TextBlock Text="{Binding Subtitle}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource MyFontSmallSubheaderBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -115,7 +118,7 @@
                                     Style="{StaticResource TextBlockButtonStyle}" >
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="{Binding Title}" Margin="3,-7,10,10" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
-                                        <TextBlock Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol" Margin="0,-7,0,10" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
+                                        <TextBlock Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol" Margin="0,-7,0,10" Style="{StaticResource MyFontSubheaderBlockStyle}" TextWrapping="NoWrap" />
                                     </StackPanel>
                                 </Button>
                             </Grid>
@@ -131,14 +134,14 @@
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <AppBarButton x:Name="backButton" Icon="Back" Height="95" Margin="10,46,10,0"
+            <AppBarButton x:Name="backButton" Icon="Back" Height="95" Margin="10,46,10,0" Foreground="#EBAF3C" 
                           Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}" 
                           Visibility="{Binding IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}, RelativeSource={RelativeSource Mode=Self}}"
                           AutomationProperties.Name="Back"
                           AutomationProperties.AutomationId="BackButton"
                           AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+            <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource MyFontHeaderBlockStyle}" Grid.Column="1" 
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,13"/>
         </Grid>
     </Grid>
     

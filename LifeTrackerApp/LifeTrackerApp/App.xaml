@@ -11,6 +11,68 @@
         
         <x:String x:Key="AppName">LifeTrackerApp</x:String>
 
+        <Style x:Key="MyColoringStyle" TargetType="Grid">
+            <Setter Property="Background" Value="#068894"/>
+        </Style>
+
+        <Style x:Key="MyFontHeaderBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="High Tower Text"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="Foreground" Value="#EBAF3C" />
+        </Style>
+        <Style x:Key="MyFontSubheaderBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="High Tower Text"/>
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="Foreground" Value="#EBAF3C" />
+        </Style>
+        <Style x:Key="MyFontSmallSubheaderBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="High Tower Text"/>
+            <Setter Property="FontSize" Value="21" />
+            <Setter Property="Foreground" Value="#EBAF3C" />
+        </Style>
         
+        
+        <!-- Copy paste from StandardStyles-->
+        <!-- Copy paste from StandardStyles-->
+        <!-- Copy paste from StandardStyles-->
+        <Style x:Key="MyBasicRichTextStyle" TargetType="RichTextBlock">
+            <Setter Property="Foreground" Value="#EBAF3C"/>
+            <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+            <Setter Property="FontFamily" Value="High Tower Text"/>
+            <Setter Property="TextTrimming" Value="WordEllipsis"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Typography.StylisticSet20" Value="True"/>
+            <Setter Property="Typography.DiscretionaryLigatures" Value="True"/>
+        </Style>
+
+        <Style x:Key="MyBaselineRichTextStyle" TargetType="RichTextBlock" BasedOn="{StaticResource MyBasicRichTextStyle}">
+            <Setter Property="LineHeight" Value="20"/>
+            <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
+            <!-- Properly align text along its baseline -->
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <TranslateTransform X="-1" Y="4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="MyItemRichTextStyle" TargetType="RichTextBlock" BasedOn="{StaticResource MyBaselineRichTextStyle}"/>
+
+        <Style x:Key="MyBodyRichTextStyle" TargetType="RichTextBlock" BasedOn="{StaticResource MyBaselineRichTextStyle}">
+            <Setter Property="FontWeight" Value="SemiLight"/>
+        </Style>
+
+        <!-- TextBlock styles -->
+
+        <Style x:Key="MyBasicTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#EBAF3C"/>
+            <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+            <Setter Property="FontFamily" Value="High Tower Text"/>
+            <Setter Property="TextTrimming" Value="WordEllipsis"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Typography.StylisticSet20" Value="True"/>
+            <Setter Property="Typography.DiscretionaryLigatures" Value="True"/>
+        </Style>
+
     </Application.Resources>
 </Application>
