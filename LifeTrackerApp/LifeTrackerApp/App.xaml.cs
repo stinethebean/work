@@ -17,6 +17,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.WindowsAzure.MobileServices;
+using Newtonsoft.Json;
+using Windows.UI.Popups;
 
 // The Grid App template is documented at http://go.microsoft.com/fwlink/?LinkId=234226
 
@@ -114,6 +116,9 @@ namespace LifeTrackerApp
             deferral.Complete();
         }
 
-        public static MobileServiceClient MobileService = new MobileServiceClient("https://lifetracker.azure-mobile.net/", "EBlXgOBltmCDhnJtGNtKYRkdTtcMpo99");
+        public static MobileServiceClient MobileService = new MobileServiceClient(
+    "https://lifetracker.azure-mobile.net/",
+    "EBlXgOBltmCDhnJtGNtKYRkdTtcMpo99"
+);
     }
 }

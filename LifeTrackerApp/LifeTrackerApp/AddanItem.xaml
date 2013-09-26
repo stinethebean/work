@@ -45,16 +45,17 @@
                           AutomationProperties.AutomationId="BackButton"
                           AutomationProperties.ItemType="Navigation Button"/>
             <TextBlock x:Name="pageTitle" Text="Add an Item" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
-                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40" SelectionChanged="pageTitle_SelectionChanged"/>
         </Grid>
-        <Button Content="Add a Document or Photo" HorizontalAlignment="Left" Margin="91,272,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox Name="TitleInput" HorizontalAlignment="Left" Margin="94,50,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="47" Width="270"/>
+        <Button Content="Add a Document or Photo" x:Name="GetDocumentButton" Click="GetDocument_Click" HorizontalAlignment="Left" Margin="640,25,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox Name="TitleInput" Style="{Binding HeaderTextStyle}" HorizontalAlignment="Left" Margin="94,50,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" Height="47" Width="270"/>
         <DatePicker Name="DateInput" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="94,123,0,0" Grid.Row="1"/>
-        <ComboBox HorizontalAlignment="Left" Margin="94,184,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120">
+        <ComboBox HorizontalAlignment="Left" Margin="94,184,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged">
             <ComboBoxItem Content="ComboBoxItem1" />
             <ComboBoxItem Content="ComboBoxItem1"/>
         </ComboBox>
-        <FlipView HorizontalAlignment="Left" Margin="91,333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="240" Height="228"/>
-        <Button Content="Save" Name="ButtonSave" Click="ButtonSave_Click" HorizontalAlignment="Left" Height="54" Margin="281,184,0,0" Grid.Row="1" VerticalAlignment="Top" Width="132"/>
+        <Button Content="Save" Name="ButtonSave" Click="ButtonSave_Click" HorizontalAlignment="Left" Height="54" Margin="1087,530,0,0" Grid.Row="1" VerticalAlignment="Top" Width="132"/>
+        <TextBox Name="DescriptionInput" HorizontalAlignment="Left" Margin="94,275,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Height="306" Width="385"/>
+        <Grid HorizontalAlignment="Left" Height="372" Margin="643,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="485"/>
     </Grid>
 </Page>

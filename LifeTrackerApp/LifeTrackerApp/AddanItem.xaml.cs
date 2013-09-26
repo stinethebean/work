@@ -9,6 +9,9 @@ using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
+using Windows.Storage;
+using Windows.Storage.FileProperties;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
@@ -32,7 +35,8 @@ namespace LifeTrackerApp
         public string Title { get; set; }
         [DataMember]
         public string Date { get; set; }
-        //[DataMember(Date="date")]
+        [DataMember]
+        public string Description { get; set; }
     }
 
     /// <summary>
@@ -71,12 +75,15 @@ namespace LifeTrackerApp
 
 
         }
+
+        
         async void InsertItem()
         {
-            Item item = new Item { Text = "Awesome item - testing ", Title=TitleInput.Text, Date=DateInput.Date.ToString() };
+            Item item = new Item { Text = "Awesome item - testing ", Title=TitleInput.Text, Date=DateInput.Date.ToString(), Description=DescriptionInput.Text };
             //Item title = new Item { Title = "Title" };
             // string date_number = DateInput.Date.ToString()
             //Item date = new Item { Date = "Date"};
+            
 
             await App.MobileService.GetTable<Item>().InsertAsync(item);
         }
@@ -130,6 +137,17 @@ namespace LifeTrackerApp
         }
 
         #endregion
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void pageTitle_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
+        
     }
 
 }

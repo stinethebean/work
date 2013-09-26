@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.WindowsAzure.MobileServices;
+using Windows.UI.Popups;
 
 // The Grouped Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234231
 
@@ -109,8 +110,12 @@ namespace LifeTrackerApp
         /// The navigation parameter is available in the LoadState method 
         /// in addition to page state preserved during an earlier session.
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override  void OnNavigatedTo(NavigationEventArgs e)
         {
+           
+         //await Authenticate();
+           
+            //Refresh();
             navigationHelper.OnNavigatedTo(e);
         }
 
@@ -123,7 +128,7 @@ namespace LifeTrackerApp
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(BasicPage1), null);
+            this.Frame.Navigate(typeof(AddanItem), null);
             //this.Frame.Navigate(new Uri("AddItemPage.xaml", UriKind.Relative));
             //navigationHelper.
         }
@@ -132,12 +137,33 @@ namespace LifeTrackerApp
         {
 
         }
-        public class Item
+
+        private MobileServiceUser user;
+        private async System.Threading.Tasks.Task Authenticate()
         {
-            public int Id { get; set; }
-            public string Text { get; set; }
+            while (user == null)
+            {
+                string message;
+                try
+                {
+                    user = await App.MobileService
+                        .LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+                    message =
+                        string.Format("You are now logged in - {0}", user.UserId);
+                }
+                catch (InvalidOperationException)
+                {
+                    message = "You must log in. Login Required";
+                }
+
+
+                var dialog = new MessageDialog(message);
+                dialog.Commands.Add(new UICommand("OK"));
+                await dialog.ShowAsync();
+            }
+
+
         }
-        Item item = new Item { Text = "Awesome item" };
-        await App.MobileService.GetTable<Item>().InsertAsync(item);
+
     }
 }
