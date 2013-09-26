@@ -13,15 +13,32 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.WindowsAzure.MobileServices;
+using System.Runtime.Serialization;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
 namespace LifeTrackerApp
 {
+
+    [DataContract]
+    public class Item
+    {
+        [DataMember]
+        public int Id { get; set; }
+        [DataMember]
+        public string Text { get; set; }
+        [DataMember]
+        public string Title { get; set; }
+        [DataMember]
+        public string Date { get; set; }
+        //[DataMember(Date="date")]
+    }
+
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class BasicPage1 : Page
+    public sealed partial class AddanItem : Page
     {
 
         private NavigationHelper navigationHelper;
@@ -45,19 +62,28 @@ namespace LifeTrackerApp
         }
 
 
-        public BasicPage1()
+        public AddanItem()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
-        }
-        public class Item
-        {
-            public int Id { get; set; }
-            public string Text { get; set; }
-        }
 
+
+        }
+        async void InsertItem()
+        {
+            Item item = new Item { Text = "Awesome item - testing ", Title=TitleInput.Text, Date=DateInput.Date.ToString() };
+            //Item title = new Item { Title = "Title" };
+            // string date_number = DateInput.Date.ToString()
+            //Item date = new Item { Date = "Date"};
+
+            await App.MobileService.GetTable<Item>().InsertAsync(item);
+        }
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
+            InsertItem();
+        }
 
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
@@ -105,4 +131,5 @@ namespace LifeTrackerApp
 
         #endregion
     }
+
 }
