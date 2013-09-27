@@ -45,8 +45,8 @@
                 </Rectangle.Fill>
             </Rectangle>
             <TextBlock Text="Notes: " HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="385,24,0,0"/>
-            <TextBlock Text="{Binding Description}" Margin="0,-24,919,626" TextWrapping="WrapWholeWords"/>
-            <TextBlock Text="{Binding Content}" Style="{StaticResource MyFontSubheaderBlockStyle}" Margin="462,114,185,284" TextWrapping="WrapWholeWords"/>
+            <TextBlock Text="{Binding Description}" Margin="494,173,425,429" TextWrapping="WrapWholeWords"/>
+            <TextBlock Text="{Binding Content}" Style="{StaticResource MyFontSubheaderBlockStyle}" Margin="605,298,42,100" TextWrapping="WrapWholeWords"/>
         </Grid>
 
         <!-- Back button and page title -->
